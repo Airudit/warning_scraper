@@ -6,6 +6,7 @@
     {% for w in fp.discoveredwarnings %}
     {
       "description": "{{w.warningid}}:{{cleanforjson(w.warningmessage)}}",
+      "check_name": "{{w.warningid}}",
       {% if w.md5() not in md5_written %}
       "fingerprint": "{{w.md5()}}",{{'' if md5_written.add(w.md5()) }}{# append md5 to set, don't print any output #} 
       {% else %}
