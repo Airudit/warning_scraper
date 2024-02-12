@@ -16,7 +16,11 @@
       "fingerprint": "{{w.md5(uselinenumber=True, usecolnumber=True)}}",{{'' if md5_written.add(w.md5(uselinenumber=True, usecolnumber=True)) }}{#append md5 to set#} 
       {% endif %}
       {% endif %}
+      {% if w.severity %}
       "severity": "{{w.severity.name}}",
+      {% else %}
+      "severity": "info",
+      {% endif %}
       "colnumber": "{{w.colnumber}}",
       "location": {
         "path": "{{getpathfrom(w.fullpath, args.urlrelativeto).as_posix()}}",
